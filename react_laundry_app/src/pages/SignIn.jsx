@@ -1,29 +1,45 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { loginUser } from '../api/authApi';
 import 'boxicons/css/boxicons.min.css';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 function SignIn() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
     const [passwordVisible, setPasswordVisible] = useState(false);
-
-    const nameRef = useRef();
-    const emailRef = useRef();
-    const passwordRef = useRef();
+    const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
 
-    const submitLogin = (event) => {
+    const submitLogin = async (event) => {
         event.preventDefault();
-        const payload = {
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
+        setLoading(true);
+        try {
+            const credentials = { email, password };
+            const response = await loginUser(credentials);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "top-start",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+            });
+            Toast.fire({
+                icon: "success",
+                title: "Login successfully"
+            });
+            setMessage("User logged in successfully");
+            navigate("/home");
+        } catch (err) {
+            setMessage("Login failed. Please try again.");
+        } finally {
+            setLoading(false);
         }
-        axios.post('http://127.0.0.1:8000/api/login', payload).then(response =>{
-            console.log(response.data);
-        })
-    }
+    };
 
     return (
         <div className="container-fluid vh-100">
@@ -39,12 +55,12 @@ function SignIn() {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="email" className="form-label">Email</label>
-                                <input type="email" className="form-control" id="email" ref={emailRef} />
+                                <input type="email" className="form-control" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="password" className="form-label">Password</label>
                                 <div className="input-group">
-                                    <input type={passwordVisible ? "text" : "password"} className="form-control" id="password" ref={passwordRef} />
+                                    <input type={passwordVisible ? "text" : "password"} className="form-control" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                                     <span className="input-group-text" onClick={togglePasswordVisibility}>
                                         <i className={passwordVisible ? "bx bxs-hide" : "bx bxs-show"}></i>
                                     </span>
@@ -55,10 +71,17 @@ function SignIn() {
                                 <label className="form-check-label" htmlFor="rememberMe">Remember me</label>
                                 <a href="#" className="float-end">Forgot Password?</a>
                             </div>
-                            <button type="submit" className="btn btn-primary w-100 mb-3">Login</button>
+                            <button type="submit" className="btn btn-primary w-100 mb-3" disabled={loading}>
+                                {loading ? (
+                                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                ) : (
+                                    "Login"
+                                )}
+                            </button>
                             <div className="text-center">
                                 <p className="mb-0">Don't have an account? <Link to="/register" className='text-decoration-none'>Sign up now</Link></p>
                             </div>
+                            {message && <div className="alert alert-info mt-3">{message}</div>}
                         </div>
                     </form>
                 </div>
