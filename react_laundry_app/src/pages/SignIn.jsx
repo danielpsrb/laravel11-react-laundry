@@ -33,7 +33,7 @@ function SignIn() {
                     <form className="w-75" onSubmit={submitLogin}>
                         <div className="card-body">
                             <div className="text-center mb-3">
-                                <img src="https://i.pinimg.com/originals/75/ae/0b/75ae0bcba2cac8d7289114883dea1f74.png" alt="Avatar" className="img-fluid" width={80} height={80} />
+                                <img src="/images/logo.png" alt="Avatar" className="img-fluid" width={80} height={80} />
                                 <h3 className="mt-2">Welcome Back!</h3>
                                 <p>Please login to your account</p>
                             </div>
