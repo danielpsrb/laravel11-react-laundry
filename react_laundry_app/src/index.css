@@ -1,0 +1,11 @@
+.bg-image {
+    background-image: url('/images/login-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.bg-signup {
+    background-image: url('/images/signup-bg.png');
+    background-size: cover;
+    background-position: center;
+}
