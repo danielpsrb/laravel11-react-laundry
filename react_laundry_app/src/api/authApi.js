@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { API_BASE_URL } from './apiConfig';
 
+
 // Register a new user
 export const registerUser = async (userData) => {
     try {
@@ -12,16 +13,18 @@ export const registerUser = async (userData) => {
     }
 };
 
-// Login an existing user
+// Login user
 export const loginUser = async (credentials) => {
     try {
         const response = await axios.post(`${API_BASE_URL}/login`, credentials);
+        localStorage.setItem('token', response.data.token); // Simpan token ke local storage
         return response.data;
     } catch (error) {
         console.error('Failed to login user:', error);
         throw error;
     }
 };
+
 
 //logout user
 export const logoutUser = async () => {

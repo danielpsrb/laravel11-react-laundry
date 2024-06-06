@@ -3,6 +3,8 @@ import SignIn from "./pages/SignIn/SignIn";
 import SignUp from "./pages/SignUp/SignUp";
 import Home from "./pages/Home/Home";
 import "./App.css";
+import Orders from "./pages/Orders/Orders";
+import NewOrder from "./pages/NewOrder/NewOrder"; // Import NewOrder component
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
           <Route path='/login' element={<SignIn />} />
           <Route path='/register' element={<SignUp />} />
           <Route path='/home' element={<Home />} />
+          <Route path='/orders' element={<Orders />} />
+          <Route path='/orders/new' element={<NewOrder />} />
         </Routes>
       </BrowserRouter>
     </div>
