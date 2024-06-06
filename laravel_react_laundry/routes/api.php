@@ -12,12 +12,11 @@ Route::middleware('auth:sanctum')->group(function() {
     });
 
     Route::apiResource('/users', UserController::class);
+
+    Route::post('/orders', [OrderController::class, 'createOrder']);
+    Route::get('/orders', [OrderController::class, 'getOrders']);
 });
 
 Route::post('/login', [AuthController::class, 'loginAction']);
 Route::post('/register', [AuthController::class, 'registerAction']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-
-Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/orders', [OrderController::class, 'createOrder']);
-});
