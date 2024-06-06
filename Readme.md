@@ -120,6 +120,17 @@
 - `estimasi_hari`: wajib, integer
 - `status`: opsional, string, default `pending`
 
+
+
+### Mendapatkan order
+
+**Endpoint:** `http://127.0.0.1:8000/api/orders`
+
+**Metode:** `GET`
+
+**Deskripsi:** Mendapatkan list order yang tersimpan. Memerlukan autentikasi token di masukan di header Authorization.
+
+
 **Catatan:**
 Ganti `YOUR_API_TOKEN_HERE` dengan token yang diterima saat login.
 
