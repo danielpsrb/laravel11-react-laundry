@@ -134,5 +134,3 @@
 **Catatan:**
 Ganti `YOUR_API_TOKEN_HERE` dengan token yang diterima saat login.
 
-
-Dengan dokumentasi ini, tim frontend dapat menggunakan API untuk register, login, dan membuat order dengan mudah. Pastikan semua permintaan memenuhi aturan validasi yang ditetapkan untuk menghindari kesalahan.
