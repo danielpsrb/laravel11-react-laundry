@@ -1,0 +1,18 @@
+label {
+  display: block;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 7px;
+  border-radius: 4px;
+  border: 1px solid rgb(204, 204, 204);
+}
+
+form button {
+  width: fit-content;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 5px;
+}
