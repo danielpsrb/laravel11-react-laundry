@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -10,18 +11,17 @@ function Navbar() {
           </div>
           <div className='navb-item d-none d-lg-flex'>
             <div className='item'>
-              <a href='beranda.html'>Home</a>
+              <Link to='/home'>Home</Link>
             </div>
             <div className='item'>
-              <a href='newOrder.html'>New Orders</a>
+              <Link to='/orders/new'>New Orders</Link>
             </div>
             <div className='item'>
-              <a href='orderInfo.html'>Order Info</a>
+              <Link to='/orders'>Order Info</Link>
             </div>
             <div className='item'>
-              <a href='profil.html'>Profile</a>
+              <a href='/profile'>Profile</a>
             </div>
-
             <div className=' dropdown item-button'>
               <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
                 <img src='/images/users.png' width='40' height='40' alt='User' />
