@@ -29,7 +29,15 @@ export const loginUser = async (credentials) => {
 //logout user
 export const logoutUser = async () => {
     try {
-        const response = await axios.post(`${API_BASE_URL}/logout`);
+        const token = localStorage.getItem("token");
+        if(!token) throw new Error("No token found");
+
+        const response = await axios.post(`${API_BASE_URL}/logout`, {}, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        localStorage.removeItem('token'); //hapus token dari local storage
         return response.data;
     } catch (error) {
         console.error('Failed to logout user:', error);
