@@ -17,6 +17,12 @@ class OrderController extends Controller
 
         $order = Order::create($data);
 
+        // Perbarui data alamat dan nomor telepon di tabel users
+        $user = Auth::user();
+        $user->address = $data['alamat'];
+        $user->phone_number = $data['nomor_telepon'];
+        $user->save();
+
         return response()->json([
             'message' => 'Order created successfully',
             'order' => $order
@@ -24,9 +30,9 @@ class OrderController extends Controller
     }
 
       // mengambil daftar pesanan
-      public function getOrders(Request $request)
-      {
-          $orders = Order::where('user_id', $request->user()->id)->get();
-          return response()->json($orders);
-      }
+    public function getOrders(Request $request)
+    {
+        $orders = Order::where('user_id', $request->user()->id)->get();
+        return response()->json($orders);
+    }
 }
