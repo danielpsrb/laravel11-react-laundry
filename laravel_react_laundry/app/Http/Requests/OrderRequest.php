@@ -24,9 +24,10 @@ class OrderRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'alamat' => 'required|string|max:255',
+            'nomor_telepon' => 'required|string|max:15',
             'jenis_laundry' => 'required|string|max:255',
             'estimasi_hari' => 'required|integer|min:1',
-            'status' => 'string|in:pending,in_progress,completed',
+            'status' => 'nullable|string|in:pending,in_progress,completed|max:20',
         ];
     }
 }
