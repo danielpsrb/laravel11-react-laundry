@@ -11,6 +11,7 @@ const NewOrder = () => {
   const [orderData, setOrderData] = useState({
     name: "",
     alamat: "",
+    nomor_telepon: "",
     jenis_laundry: "",
     estimasi_hari: "",
     status: "pending",
@@ -26,11 +27,21 @@ const NewOrder = () => {
     e.preventDefault();
     try {
       await createOrder(orderData, token);
-      alert("Order created successfully");
+      Swal.fire({
+        icon: "success",
+        title: "Order created successfully",
+        showConfirmButton: false,
+        timer: 1500,
+      });
       navigate("/orders");
     } catch (error) {
       console.error("Error creating order:", error);
-      alert("Failed to create order");
+      Swal.fire({
+        icon: "error",
+        title: "Failed to create order",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
   };
 
@@ -38,7 +49,7 @@ const NewOrder = () => {
     <div>
       <Navbar />
       <div className='container d-flex flex-column align-items-center '>
-        <h1 className='mt-5 mb-4 '>New Order</h1>
+        <h1 className='mt-3'>New Order</h1>
         <OrderForm orderData={orderData} handleChange={handleChange} handleSubmit={handleSubmit} />
       </div>
     </div>
