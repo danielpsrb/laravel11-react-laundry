@@ -1,7 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logoutUser } from "../api/authApi";
 
 function Navbar() {
+
+  const navigate = useNavigate();
+
+  const handleSignOut = async(e) => {
+    e.preventDefault();
+    try {
+      await logoutUser();
+      navigate("/login");
+    } catch (error) {
+      console.error("Failed to sign out:", error);
+    }
+  }
+
   return (
     <div>
       <header>
@@ -28,14 +42,9 @@ function Navbar() {
               </a>
               <ul className='dropdown-menu' aria-labelledby='dropdownMenuLink'>
                 <li>
-                  <a className='dropdown-item' href='login.html'>
-                    Login
-                  </a>
-                </li>
-                <li>
-                  <a className='dropdown-item' href='#'>
-                    Register
-                  </a>
+                  <button className='dropdown-item' onClick={handleSignOut}>
+                    Sign Out
+                  </button>
                 </li>
               </ul>
             </div>
@@ -75,7 +84,7 @@ function Navbar() {
                     <i className='fa-solid fa-address-book'></i>
                     <a href='#'>Profile</a>
                   </div>
-                  <a href='#' className='navb-button' type='button'>
+                  <a href='#' className='navb-button' onClick={handleSignOut}>
                     Login
                   </a>
                 </div>
