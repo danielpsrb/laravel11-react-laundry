@@ -12,15 +12,15 @@ a {
 
 header .container-fluid {
   width: 100%;
-  padding: 0 50px;
+  padding: 0 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 header .navb-logo img {
-  width: 140px;
-  height: 66px;
+  width: 60px;
+  height: 60px;
   object-fit: contain;
 }
 
@@ -156,4 +156,13 @@ header .item:hover {
   background-color: #274d8a;
   color: #fefe;
 }
+
 /* end navbar  */
+
+/* HeroSection.css */
+
+.hero .display-6 {
+  margin-top: 1rem; /* Atur margin top untuk memberi jarak di atas */
+  margin-bottom: 1rem; /* Atur margin bottom untuk memberi jarak di bawah */
+}
+
