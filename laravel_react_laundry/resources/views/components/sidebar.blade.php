@@ -12,7 +12,7 @@
             </li>
             <li class="menu-header">Pages</li>
             <li class="nav-item ">
-                <a href="{{ route('users.index') }}" class="nav-link "><i class="fas fa-user"></i>
+                <a href="{{ route('users.data') }}" class="nav-link "><i class="fas fa-user"></i>
                     <span>Users</span></a>
             </li>
             <li class="nav-item dropdown">
@@ -21,7 +21,7 @@
                 <ul class="dropdown-menu">
                     <li class="{{ Request::is('features-activities') ? 'active' : '' }}">
                         <a class="nav-link"
-                            href="#">Manage Orders</a>
+                            href="{{ route('orders.data')}}">Manage Orders</a>
                     </li>
                 </ul>
             </li>
