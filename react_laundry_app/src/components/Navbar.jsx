@@ -38,7 +38,7 @@ function Navbar() {
             </div>
             <div className=' dropdown item-button'>
               <a href='#' role='button' id='dropdownMenuLink' data-bs-toggle='dropdown' aria-expanded='false'>
-                <img src='/images/users.png' width='40' height='40' alt='User' />
+                <img src='/images/profile-users.png' width='40' height='40' alt='User' />
               </a>
               <ul className='dropdown-menu' aria-labelledby='dropdownMenuLink'>
                 <li>
