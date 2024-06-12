@@ -16,6 +16,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/users', [UserController::class, 'index'])->name('users.data');
 
+    //route edit users
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+
+    //route update users
+    Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.data.update');
+
     //route orders
     Route::get('/orders', [OrderAdminController::class, 'index'])->name('orders.data');
 
