@@ -4,6 +4,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import Home from "./pages/Home/Home";
 import "./App.css";
 import Orders from "./pages/Orders/Orders";
+import ProfileUsers from "./pages/Profile/ProfileUsers";
 import NewOrder from "./pages/NewOrder/NewOrder"; // Import NewOrder component
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/orders' element={<Orders />} />
           <Route path='/orders/new' element={<NewOrder />} />
+          <Route path='/profile' element={<ProfileUsers />} />
         </Routes>
       </BrowserRouter>
     </div>
