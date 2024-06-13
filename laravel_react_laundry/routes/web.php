@@ -19,6 +19,9 @@ Route::middleware(['auth'])->group(function () {
     //route edit users
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
 
+    //route delete users
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.delete');
+
     //route update users
     Route::patch('/users/{user}', [UserController::class, 'update'])->name('users.data.update');
 
