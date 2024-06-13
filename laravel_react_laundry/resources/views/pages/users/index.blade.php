@@ -92,7 +92,7 @@
                                                             Edit
                                                         </a>
 
-                                                        <form action="#"
+                                                        <form action="{{ route('users.delete', $user->id) }}"
                                                             method="POST" class="ml-2">
                                                             <input type="hidden" name="_method" value="DELETE" />
                                                             <input type="hidden" name="_token"
