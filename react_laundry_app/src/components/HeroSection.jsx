@@ -1,6 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function HeroSection() {
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/orders/new'); // Navigasi ke halaman /orders/new
+  };
+
   return (
     <section className='hero py-3'>
       <div className='container'>
@@ -13,9 +20,9 @@ function HeroSection() {
             <p className='lead'>
               All Fresh Laundry menyediakan layanan laundry berkualitas tinggi dengan harga terjangkau. Percayakan pakaian Anda kepada kami dan nikmati layanan terbaik.
             </p>
-            <a href='#' className='btn btn-primary py-2 px-3'>
+            <button onClick={handleButtonClick} className='btn btn-primary py-2 px-3'>
               Laundry Sekarang!
-            </a>
+            </button>
           </div>
         </div>
 
