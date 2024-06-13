@@ -53,4 +53,11 @@ class UserController extends Controller
 
         return redirect()->route('users.data')->with('success', 'Data user berhasil diupdate');
     }
+
+    //delete data users
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->route('users.data')->with('success', 'Data user berhasil dihapus');
+    }
 }
