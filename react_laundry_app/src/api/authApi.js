@@ -2,7 +2,6 @@ import axios from 'axios';
 import { API_BASE_URL } from './apiConfig';
 
 
-// Register a new user
 export const registerUser = async (userData) => {
     try {
         const response = await axios.post(`${API_BASE_URL}/register`, userData);
@@ -13,7 +12,6 @@ export const registerUser = async (userData) => {
     }
 };
 
-// Login user
 export const loginUser = async (credentials) => {
     try {
         const response = await axios.post(`${API_BASE_URL}/login`, credentials);
@@ -25,8 +23,6 @@ export const loginUser = async (credentials) => {
     }
 };
 
-
-//logout user
 export const logoutUser = async () => {
     try {
         const token = localStorage.getItem("token");
@@ -37,7 +33,8 @@ export const logoutUser = async () => {
                 Authorization: `Bearer ${token}`
             }
         });
-        localStorage.removeItem('token'); //hapus token dari local storage
+        localStorage.removeItem('token');
+        localStorage.removeItem("usersData");
         return response.data;
     } catch (error) {
         console.error('Failed to logout user:', error);
