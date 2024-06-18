@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import {loginUser} from "../../api/authApi";
 import "boxicons/css/boxicons.min.css";
+import { authSession } from "../../context/auth";
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -10,6 +11,8 @@ function SignIn() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const { login } = authSession();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -21,6 +24,8 @@ function SignIn() {
     try {
       const credentials = {email, password};
       const response = await loginUser(credentials);
+      const data = response.data.name;
+      login(data);
       const Toast = Swal.mixin({
         toast: true,
         position: "top-start",
@@ -33,9 +38,10 @@ function SignIn() {
         title: "Login successfully",
       });
       setMessage("User logged in successfully");
-      navigate("/home");
+      navigate("/home", {replace: true });
     } catch (err) {
-      setMessage("Login failed. Please try again.");
+      const errorMessage = err.response?.data?.message || "Login failed. Please try again.";
+      setMessage(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -53,6 +59,7 @@ function SignIn() {
                 <h3 className='mt-2'>Welcome Back!</h3>
                 <p>Please login to your account</p>
               </div>
+              {message && <div className='alert alert-danger mt-3'>{message}</div>}
               <div className='mb-3'>
                 <label htmlFor='email' className='form-label'>
                   Email
@@ -96,7 +103,7 @@ function SignIn() {
                   </Link>
                 </p>
               </div>
-              {message && <div className='alert alert-info mt-3'>{message}</div>}
+              
             </div>
           </form>
         </div>
